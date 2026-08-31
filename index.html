@@ -19,15 +19,9 @@
     }
 
     @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-      }
-      40% {
-        transform: translateY(-20px);
-      }
-      60% {
-        transform: translateY(-10px);
-      }
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-20px); }
+      60% { transform: translateY(-10px); }
     }
   </style>
   <link rel="preload" as="image" href="./images/image1.gif">
@@ -70,17 +64,15 @@
 
   <script>
     (() => {
-      // DOM references
       const yesButton = document.getElementById('yesButton');
       const noButton = document.getElementById('noButton');
       const imageDisplay = document.getElementById('imageDisplay');
       const valentineQuestion = document.getElementById('valentineQuestion');
       const responseButtons = document.getElementById('responseButtons');
-      
 
+      // Uses the new converted MP3 file
       const honeybeeSong = new Audio('honeybee.mp3');
 
-      // Configuration
       const GROWTH_PER_CLICK = 35;
       const FONT_GROWTH_PER_CLICK = 25;
       const MAX_NO_CLICKS = 5;
@@ -114,7 +106,6 @@
         'Happy kitten celebrating',
       ];
 
-      // State
       let noClickCount = 0;
       let buttonHeight = 48;
       let buttonWidth = 80;
@@ -140,21 +131,16 @@
       });
 
       yesButton.addEventListener('click', () => {
-        // 1. Update text & image UI
         imageDisplay.src = IMAGE_PATHS.at(-1);
         imageDisplay.alt = ALT_TEXTS.at(-1);
         valentineQuestion.textContent = 'Yayyy!! :3';
         responseButtons.style.display = 'none';
 
-        // 2. Play Audio via DOM reference
-        if (honeybeeSong) {
-          honeybeeSong.currentTime = 0;
-          honeybeeSong.play().catch(error => {
-            console.error("Audio playback failed:", error);
-          });
-        }
+        honeybeeSong.currentTime = 0;
+        honeybeeSong.play().catch(error => {
+          console.error("Audio playback error:", error);
+        });
 
-        // 3. Trigger Heart Confetti
         const heart = confetti.shapeFromPath({
           path: 'M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z',
         });
