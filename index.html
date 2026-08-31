@@ -39,11 +39,6 @@
   <link rel="preload" as="image" href="./images/image7.gif">
 </head>
 <body class="gradient-background">
-  <audio id="honeybeeSong" preload="auto">
-    <source src="honeybee.m4a" type="audio/mp4">
-    <source src="honeybee.M4A" type="audio/mp4">
-    <source src="honeybee.mp3" type="audio/mpeg">
-  </audio>
 
   <main class="flex items-center justify-center h-screen">
     <section class="flex flex-col items-center p-4">
@@ -81,7 +76,9 @@
       const imageDisplay = document.getElementById('imageDisplay');
       const valentineQuestion = document.getElementById('valentineQuestion');
       const responseButtons = document.getElementById('responseButtons');
-      const honeybeeSong = document.getElementById('honeybeeSong');
+      
+
+      const honeybeeSong = new Audio('honeybee.m4a');
 
       // Configuration
       const GROWTH_PER_CLICK = 35;
